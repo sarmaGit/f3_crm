@@ -2,7 +2,10 @@
 
 namespace App;
 
+use App\Events\TaskDeletedEvent;
+use App\Events\TaskSavedEvent;
 use Illuminate\Database\Eloquent\Model;
+
 //use App\Vendor;
 
 /**
@@ -34,7 +37,21 @@ class Task extends Model
 
     }
 
-    public static function tasks($dt,$order_by){
+    /*
+     * Events
+     */
+
+    protected $dispatchesEvents = [
+        'saved' => TaskSavedEvent::class,
+        'deleting'=>TaskDeletedEvent::class,
+    ];
+
+    /*
+     * Queries
+     */
+
+    public static function tasks($dt, $order_by)
+    {
         $tasks = Task::with(['vendor'])->whereDate('updated_at', '=', $dt)->orderBy($order_by)->get();
         return $tasks;
     }
