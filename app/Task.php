@@ -28,7 +28,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Task extends Model
 {
-    protected $fillable = ['name', 'phone_number', 'vendor_code', 'model', 'expire_at', 'vendor_name'];
+    protected $fillable = ['name', 'phone_number', 'vendor_code', 'model', 'expire_at', 'vendor_id'];
 
     // Set relation to vendor table
     public function vendor()

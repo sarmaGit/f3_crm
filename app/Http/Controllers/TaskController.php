@@ -58,15 +58,13 @@ class TaskController extends Controller
         $validatedData = $request->validate([
             'name' => 'required|regex:/^[а-яА-Я]{3,20}$/um',
             'phone_number' => 'required|numeric|regex:/^\d{11}$/m',
-//            'vendor_code' => 'required|integer',
-            'vendor_name' => 'required',
+            'vendor_id' => 'required|integer',
             'model' => 'nullable',
         ]);
 
         $expire_at = ['expire_at' => Carbon::now()->addMinutes($request->expire_at)->toDateTimeString()];
         $data = array_merge($validatedData, $expire_at);
         $task = Task::create($data);
-//        event(new TaskSavedEvent($task));
         return redirect('/tasks')->with('success', 'Клиент добавлен в очередь');
     }
 

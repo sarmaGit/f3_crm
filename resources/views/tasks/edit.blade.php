@@ -33,7 +33,6 @@
                     <label for="price">Номер телефона :</label>
                     <input type="text" class="form-control" name="phone_number" value="{{$task->phone_number}}"/>
                 </div>
-                {{--TODO: переделать как create--}}
                 <div class="form-group">
                     <label for="vendor_code">Производитель: </label>
                     <select name="vendor_id" id="vendor_id">
