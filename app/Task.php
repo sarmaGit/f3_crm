@@ -30,11 +30,12 @@ class Task extends Model
 {
     protected $fillable = ['name', 'phone_number', 'vendor_code', 'model', 'expire_at', 'vendor_name'];
 
+    // Set relation to vendor table
     public function vendor()
     {
 //        return $this->belongsTo(Vendor::class, 'vendor_code', 'id');
-        return $this->belongsTo(Vendor::class, 'vendor_name', 'vendor_name');
-
+//        return $this->belongsTo(Vendor::class, 'vendor_name', 'vendor_name');
+        return $this->belongsTo(Vendor::class);
     }
 
     /*
@@ -43,7 +44,7 @@ class Task extends Model
 
     protected $dispatchesEvents = [
         'saved' => TaskSavedEvent::class,
-        'deleting'=>TaskDeletedEvent::class,
+        'deleting' => TaskDeletedEvent::class,
     ];
 
     /*
