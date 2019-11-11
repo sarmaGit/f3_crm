@@ -30,6 +30,7 @@ class TaskController extends Controller
         $this->order_by($request->order_by);
 
         $tasks = Task::tasks($this->dt, $this->order_by);
+//        dd($tasks);
 
         return view('tasks.index', compact('tasks', 'dt_view'));
     }

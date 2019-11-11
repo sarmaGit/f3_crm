@@ -19,7 +19,11 @@ class TaskSavedEvent implements ShouldBroadcast
 
     public function __construct(Task $task)
     {
-        $this->task = $task;
+//        $this->task=$task;
+        $id = $task->getAttributeValue('id');
+        $this->task = Task::with('vendor')->find($id);
+//        $this->task = Task::with('vendor')->where('id','=',$id)->get();
+//        dd($this->task);
     }
 
     public function broadcastOn()
