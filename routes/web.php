@@ -22,5 +22,3 @@ Route::get('/queue', ['as' => 'queue', 'uses' => 'QueueController@index']);
 Route::get('/queue/add', ['as' => 'add', 'uses' => 'QueueController@add']);
 
 Route::resource('tasks', 'TaskController');
-
-123
