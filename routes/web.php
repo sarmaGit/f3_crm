@@ -11,7 +11,7 @@
 |
 */
 
-use App\Events\FillQueueAddEvent;
+use App\Events\TaskSavedEvent;
 
 Route::get('/', function () {
     return view('welcome');
@@ -19,7 +19,7 @@ Route::get('/', function () {
 
 Route::get('/queue', ['as' => 'queue', 'uses' => 'QueueController@index']);
 //Route::get('/queue/add',function (){
-//    event(new FillQueueAddEvent('hello world'));
+//    event(new TaskSavedEvent('hello world'));
 //});
 
 Route::get('/queue/add', ['as' => 'add', 'uses' => 'QueueController@add']);
