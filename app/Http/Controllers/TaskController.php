@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Events\FillQueueAddEvent;
+use App\Events\TaskSavedEvent;
 use App\Vendor;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -66,7 +66,7 @@ class TaskController extends Controller
         $expire_at = ['expire_at' => Carbon::now()->addMinutes($request->expire_at)->toDateTimeString()];
         $data = array_merge($validatedData, $expire_at);
         $task = Task::create($data);
-        event(new FillQueueAddEvent($task));
+//        event(new TaskSavedEvent($task));
         return redirect('/tasks')->with('success', 'Клиент добавлен в очередь');
     }
 
@@ -95,10 +95,10 @@ class TaskController extends Controller
         $validatedData = $request->validate([
             'name' => 'required|regex:/^[а-яА-Я]{3,20}$/um',
             'phone_number' => 'required|numeric|regex:/^\d{11}$/m',
-            'vendor_code' => 'required|integer',
+            'vendor_id' => 'required|integer',
             'model' => 'nullable',
         ]);
-        Task::whereId($id)->update($validatedData);
+        $task = Task::whereId($id)->update($validatedData);
 
         return redirect('/tasks')->with('success', 'Запись обновлена');
     }
@@ -127,6 +127,11 @@ class TaskController extends Controller
     {
         //
     }
+
+    /*
+     * Non routes
+     */
+
 
     // Set date in queries and return date will passed to view
     public function get_date($date)
