@@ -36,10 +36,10 @@
                 {{--TODO: переделать как create--}}
                 <div class="form-group">
                     <label for="vendor_code">Производитель: </label>
-                    <select name="vendor_code" id="vendor_code">
+                    <select name="vendor_id" id="vendor_id">
                         <option value="">Выберите производителя</option>
                         @foreach ($vendors as $vendor)
-                            @if($task->vendor_code == $vendor->id)
+                            @if($task->vendor_id == $vendor->id)
                                 <option value="{{$vendor->id}}" selected>{{$vendor->vendor_name}}</option>
                             @else
                                 <option value="{{$vendor->id}}">{{$vendor->vendor_name}}</option>
