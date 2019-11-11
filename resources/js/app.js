@@ -1,3 +1,1 @@
-// require('./bootstrap');
-// require('vue');
-// require('vuejs-datepicker');
+require('./bootstrap');

@@ -12,4 +12,14 @@ const mix = require('laravel-mix');
  */
 
 mix.js('resources/js/app.js', 'public/js')
+    .scripts([
+            'resources/js/queue.js',
+            'resources/js/datepicker_ru.js',
+            'resources/js/datepicker_init.js'
+        ],
+        'public/js/all.js')
+    .extract([
+        'jquery',
+        'jquery-ui'
+    ])
     .sass('resources/sass/app.scss', 'public/css');

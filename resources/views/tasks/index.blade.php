@@ -10,7 +10,7 @@
     </style>
     <div class="uper">
 
-        <form method="post" action="{{ route('select_date')}}">
+        <form method="get" action="{{ route('tasks.index')}}">
             <h1>
                 Смена
                 @csrf
@@ -27,10 +27,11 @@
         <table class="table table-striped">
             <thead>
             <tr>
-                <td>ID</td>
+                <td><a href="/tasks/">ID</a></td>
                 <td>Имя</td>
                 <td>Номер телефона</td>
-                <td>Производитель</td>
+{{--                <td><a href="http://{{$_SERVER['PHP_SELF']}}?order_by=vendor_code">Производитель</a></td>--}}
+                <td><a href="?order_by=vendor_code">Производитель</a></td>
                 <td>Модель</td>
                 <td colspan="2">Действие</td>
             </tr>
@@ -39,15 +40,13 @@
             <?php
 
             ?>
-            @php
-               //dd($tasks);
-            @endphp
             @foreach($tasks as $task)
                 <tr>
                     <td>{{$task->id}}</td>
                     <td>{{$task->name}}</td>
                     <td>{{$task->phone_number}}</td>
-                    <td>{{$task->vendor->vendor_name}}</td>
+{{--                    <td>{{$task->vendor->vendor_name}}</td>--}}
+                    <td>{{$task->vendor_name}}</td>
                     <td>{{$task->model}}</td>
                     <td><a href="{{ route('tasks.edit',$task->id)}}" class="btn btn-primary">Изменить</a></td>
                     <td>
@@ -63,4 +62,8 @@
         </table>
             <a href="{{route('tasks.create')}}"><button class="btn btn-success">Добавить</button></a>
     </div>
+    <script src="{{asset('js/manifest.js')}}"></script>
+    <script src="{{asset('js/vendor.js')}}"></script>
+    <script src="{{asset('js/app.js')}}"></script>
+    <script src="{{asset('js/all.js')}}"></script>
 @endsection

@@ -3,7 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use App\Vendor;
+//use App\Vendor;
 
 /**
  * App\Task
@@ -25,9 +25,17 @@ use App\Vendor;
  */
 class Task extends Model
 {
-    protected $fillable = ['name', 'phone_number', 'vendor_code', 'model'];
+    protected $fillable = ['name', 'phone_number', 'vendor_code', 'model', 'expire_at', 'vendor_name'];
 
-    public function vendor(){
-        return $this->belongsTo(Vendor::class,'vendor_code','id');
+    public function vendor()
+    {
+//        return $this->belongsTo(Vendor::class, 'vendor_code', 'id');
+        return $this->belongsTo(Vendor::class, 'vendor_name', 'vendor_name');
+
+    }
+
+    public static function tasks($dt,$order_by){
+        $tasks = Task::with(['vendor'])->whereDate('updated_at', '=', $dt)->orderBy($order_by)->get();
+        return $tasks;
     }
 }

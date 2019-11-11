@@ -11,17 +11,23 @@
 |
 */
 
+use App\Events\FillQueueAddEvent;
+
 Route::get('/', function () {
     return view('welcome');
 });
 
-//Route::match(['get', 'post'],
-//    '/tasks', ['as' => 'tasks.index', 'uses' => 'TaskController@index']);
+Route::get('/queue', ['as' => 'queue', 'uses' => 'QueueController@index']);
+//Route::get('/queue/add',function (){
+//    event(new FillQueueAddEvent('hello world'));
+//});
 
-//Route::post('/tasks', ['as' => 'tasks.index', 'uses' => 'TaskController@index']);
+Route::get('/queue/add', ['as' => 'add', 'uses' => 'QueueController@add']);
+//Route::get('/test',function (){
+//    event(new \App\Events\TestEvent('hello event'));
+//});
 
 
-
-Route::post('/tasks/date', ['as' => 'select_date', 'uses' => 'TaskController@select_date']);
+//Route::post('/tasks/date', ['as' => 'select_date', 'uses' => 'TaskController@select_date']);
 
 Route::resource('tasks', 'TaskController');

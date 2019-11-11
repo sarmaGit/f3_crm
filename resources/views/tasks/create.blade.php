@@ -26,24 +26,35 @@
                 <div class="form-group">
                     @csrf
                     <label for="name">Имя:</label>
-                    <input type="text" class="form-control" name="name"/>
+                    <input type="text" class="form-control" name="name" value=""/>
                 </div>
                 <div class="form-group">
                     <label for="phone_number">Номер телефона: </label>
                     <input type="text" class="form-control" name="phone_number"/>
                 </div>
                 <div class="form-group">
-                    <label for="vendor_code">Производитель: </label>
-                    <select name="vendor_code" id="vendor_code">
+{{--                    <label for="vendor_code">Производитель: </label>--}}
+{{--                    <select name="vendor_code" id="vendor_code">--}}
+{{--                        <option value="">Выберите производителя</option>--}}
+{{--                        @foreach ($vendors as $vendor)--}}
+{{--                            <option value="{{$vendor->id}}">{{$vendor->vendor_name}}</option>--}}
+{{--                        @endforeach--}}
+{{--                    </select>--}}
+                    <label for="vendor_name">Производитель: </label>
+                    <select name="vendor_name" id="vendor_code">
                         <option value="">Выберите производителя</option>
                         @foreach ($vendors as $vendor)
-                            <option value="{{$vendor->id}}">{{$vendor->vendor_name}}</option>
+                            <option value="{{$vendor->vendor_name}}">{{$vendor->vendor_name}}</option>
                         @endforeach
                     </select>
                 </div>
                 <div class="form-group">
                     <label for="model">Модель картриджа </label>
                     <input type="text" class="form-control" name="model"/>
+                </div>
+                <div class="form-group">
+                    <label for="model">Будет заправлен через ___ минут </label>
+                    <input type="text" class="form-control" name="expire_at" value="15"/>
                 </div>
 
                 <button type="submit" class="btn btn-primary">Отправить в очередь</button>
