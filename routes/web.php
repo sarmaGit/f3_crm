@@ -18,16 +18,7 @@ Route::get('/', function () {
 });
 
 Route::get('/queue', ['as' => 'queue', 'uses' => 'QueueController@index']);
-//Route::get('/queue/add',function (){
-//    event(new TaskSavedEvent('hello world'));
-//});
 
 Route::get('/queue/add', ['as' => 'add', 'uses' => 'QueueController@add']);
-//Route::get('/test',function (){
-//    event(new \App\Events\TestEvent('hello event'));
-//});
-
-
-//Route::post('/tasks/date', ['as' => 'select_date', 'uses' => 'TaskController@select_date']);
 
 Route::resource('tasks', 'TaskController');
