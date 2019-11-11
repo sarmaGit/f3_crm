@@ -4,18 +4,18 @@ namespace App\Http\Controllers;
 
 use App\Task;
 use Illuminate\Http\Request;
-use App\Events\FillQueueAddEvent;
+use App\Events\TaskSavedEvent;
 
 class QueueController extends Controller
 {
     public function index()
     {
-//        event(new FillQueueAddEvent('hello world'));
+//        event(new TaskSavedEvent('hello world'));
         return view('queue.index');
     }
 
 //    public function add()
 //    {
-//        event(new FillQueueAddEvent('hello world controller'));
+//        event(new TaskSavedEvent('hello world controller'));
 //    }
 }
