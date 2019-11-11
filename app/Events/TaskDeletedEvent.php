@@ -25,7 +25,6 @@ class TaskDeletedEvent implements ShouldBroadcast
     public function __construct(Task $task)
     {
         $this->task = $task;
-//        dd(123);
     }
 
     /**
