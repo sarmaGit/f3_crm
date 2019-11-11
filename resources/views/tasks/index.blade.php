@@ -45,8 +45,8 @@
                     <td>{{$task->id}}</td>
                     <td>{{$task->name}}</td>
                     <td>{{$task->phone_number}}</td>
-{{--                    <td>{{$task->vendor->vendor_name}}</td>--}}
-                    <td>{{$task->vendor_name}}</td>
+                    <td>{{$task->vendor->vendor_name}}</td>
+{{--                    <td>{{$task->vendor_name}}</td>--}}
                     <td>{{$task->model}}</td>
                     <td><a href="{{ route('tasks.edit',$task->id)}}" class="btn btn-primary">Изменить</a></td>
                     <td>
