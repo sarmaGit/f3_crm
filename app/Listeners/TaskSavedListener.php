@@ -2,11 +2,11 @@
 
 namespace App\Listeners;
 
-use App\Events\FillQueueAddEvent;
+use App\Events\TaskSavedEvent;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
 
-class FillQueueListener
+class TaskSavedListener
 {
     /**
      * Create the event listener.
@@ -21,10 +21,10 @@ class FillQueueListener
     /**
      * Handle the event.
      *
-     * @param  FillQueueAddEvent  $event
+     * @param  TaskSavedEvent  $event
      * @return void
      */
-    public function handle(FillQueueAddEvent $task)
+    public function handle(TaskSavedEvent $task)
     {
 
     }

@@ -11,7 +11,7 @@ use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
 
-class FillQueueAddEvent implements ShouldBroadcast
+class TaskSavedEvent implements ShouldBroadcast
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
@@ -24,11 +24,11 @@ class FillQueueAddEvent implements ShouldBroadcast
 
     public function broadcastOn()
     {
-        return ['my-channel'];
+        return ['saved-channel'];
     }
 
     public function broadcastAs()
     {
-        return 'my-event';
+        return 'saved-event';
     }
 }
